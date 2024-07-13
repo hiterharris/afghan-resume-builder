@@ -2,16 +2,31 @@ import { Flex, Container, Heading, Stack, Text, Button, Box } from '@chakra-ui/r
 import './introduction.css';
 import homeLogo from './../../Assets/home-logo.png'
 import { Image } from '@chakra-ui/react'
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import ResumeContext from '../../Context/ResumeContext';
 import ThemeTemplateData from '../../db/ThemeTemplateData';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
 
+const languages = {
+    en: {
+        heading: "Your resume in three easy steps",
+        subheading: "Resume builder tools that assemble well-formatted resume. Through a resume builder, you can create a professional-looking resume in a few easy steps. This resume builder offer different template options, so you can select the template that best fits your needs and style.",
+        steps: ['Select a template from our collection.', 'Build you resume using our easy to use resume builder.', 'Download your resume.'],
+        selectTemplateButton: 'Select Template',
+    },
+    da: {
+        heading: "رزومه شما در سه مرحله آسان",
+        subheading: 'ابزارهای سازنده رزومه که رزومه‌های با قالب‌بندی مناسب را تهیه می‌کنند. با استفاده از یک سازنده رزومه، شما می‌توانید در چند مرحله آسان یک رزومه حرفه‌ای و زیبا بسازید. این سازنده رزومه گزینه‌های مختلف الگو را ارائه می‌دهد، بنابراین شما می‌توانید الگویی را انتخاب کنید که بهترین تطابق را با نیازها و سبک شما داشته باشد.',
+        steps: ['یک الگو از مجموعه ما انتخاب کنید.', 'با استفاده از سازنده رزومه آسان ما، رزومه خود را بسازید.', 'رزومه خود را دانلود کنید.'],
+        selectTemplateButton: 'انتخاب الگو'
+    }
+};
+
 export default function Introduction() {
     const { selectBtn, setSelectBtn, setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext);
-    const [language, setLanguage] = useState('en    ');
     const [english, setEnglish] = useState(true);
+    const language = languages[english ? 'en' : 'da'];
     
     const handleSelectTemplate = () => {
         setSelectBtn(!selectBtn)
@@ -21,30 +36,6 @@ export default function Introduction() {
         setShowComponent(!showComponent)
         setCurrentTheme(e.target.id)
     }
-
-    useEffect(() => {
-        if (english) {
-            setLanguage(languages.en)
-        } else {
-            setLanguage(languages.da)
-        }
-    }, [english]);
-
-
-    const languages = {
-        en: {
-            heading: "Your resume in three easy steps",
-            subheading: "Resume builder tools that assemble well-formatted resume. Through a resume builder, you can create a professional-looking resume in a few easy steps. This resume builder offer different template options, so you can select the template that best fits your needs and style.",
-            steps: ['Select a template from our collection.', 'Build you resume using our easy to use resume builder.', 'Download your resume.'],
-            selectTemplateButton: 'Select Template',
-        },
-        da: {
-            heading: "رزومه شما در سه مرحله آسان",
-            subheading: 'ابزارهای سازنده رزومه که رزومه‌های با قالب‌بندی مناسب را تهیه می‌کنند. با استفاده از یک سازنده رزومه، شما می‌توانید در چند مرحله آسان یک رزومه حرفه‌ای و زیبا بسازید. این سازنده رزومه گزینه‌های مختلف الگو را ارائه می‌دهد، بنابراین شما می‌توانید الگویی را انتخاب کنید که بهترین تطابق را با نیازها و سبک شما داشته باشد.',
-            steps: ['یک الگو از مجموعه ما انتخاب کنید.', 'با استفاده از سازنده رزومه آسان ما، رزومه خود را بسازید.', 'رزومه خود را دانلود کنید.'],
-            selectTemplateButton: 'انتخاب الگو'
-        }
-    };
 
     return (
         <>
