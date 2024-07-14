@@ -36,7 +36,7 @@ export default function Navbar({ language }) {
                             as={'nav'}
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}>
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200', fontWeight: 'bold' }} to={'/home'}>{content.home}</Link>
+                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200', fontWeight: 'bold' }} to={'/'}>{content.home}</Link>
                             <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/about'}>{content.about}</Link>
                         </HStack>
                         <Button onClick={toggleColorMode}>

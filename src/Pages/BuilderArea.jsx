@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Button } from '@chakra-ui/react';
 import UserDataCollect from '../Components/UserDataCollect/UserDataCollect';
 import './BuilderArea.css'
-import Footer from '../Components/Footer/Footer';
 import ResumeContext from '../Context/ResumeContext';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
@@ -27,7 +26,6 @@ const BuilderArea = (props) => {
                 <Button className='mx-2 my-5' colorScheme={'teal'} variant={'outline'} onClick={handlePrint}>Print</Button>
                 <Button className='mx-2 my-5' colorScheme={'teal'} variant={'outline'} onClick={handleSelectNewTemplate}>Select Another Template</Button>
             </div>
-            <Footer />
         </>
     )
 }

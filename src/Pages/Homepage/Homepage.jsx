@@ -1,5 +1,5 @@
 import { Flex, Container, Heading, Stack, Text, Button, Box } from '@chakra-ui/react';
-import '../../introduction.css';
+import '../pages.css';
 import homeLogo from './../../Assets/home-logo.png'
 import { Image } from '@chakra-ui/react'
 import { useContext } from 'react';
@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom'
 
 export default function Homepage({ english, setEnglish, language }) {
-    const { selectBtn, setSelectBtn, setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext);
+    const { selectBtn, setSelectBtn } = useContext(ResumeContext);
     const navigate = useNavigate();
 
     const handleSelectTemplate = () => {

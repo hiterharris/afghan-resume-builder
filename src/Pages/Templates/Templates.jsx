@@ -1,7 +1,5 @@
-import { Flex, Container, Heading, Stack, Text, Button, Box, Center } from '@chakra-ui/react';
-import '../../introduction.css';
-import homeLogo from './../../Assets/home-logo.png'
-import { Image } from '@chakra-ui/react'
+import { Container, Heading, Stack, Button, Box } from '@chakra-ui/react';
+import '../pages.css';
 import { useContext } from 'react';
 import ResumeContext from '../../Context/ResumeContext';
 import ThemeTemplateData from '../../db/ThemeTemplateData';
@@ -9,7 +7,7 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom'
 
 export default function Templates({ english, setEnglish, language }) {
-    const { selectBtn, setSelectBtn, setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext)
+    const { setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext)
     const navigate = useNavigate();
 
     const showTheme = (e) => {
