@@ -33,12 +33,13 @@ export default function Templates({ english, setEnglish, language }) {
             </Helmet>
 
             <Box margin={4}>
-                <Button className='language-button' onClick={() => setEnglish(!english)}>{english ? 'Switch to Dari' : 'Switch to English'}</Button>
+                {/* <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button> */}
+                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'Switch to Dari' : 'Switch to English'}</Button>
             </Box>
 
-            <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'row', sm: 'column' }} display={'flex'} alignItems={'center'} maxW={'7xl'}>
+            <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'column', sm: 'column' }} display={'flex'} alignItems={'center'} maxW={'7xl'}>
                 <Stack
-                    width={{ base: '95%', md: '47%' }}
+                    width={{ base: '95%', md: '80%' }}
                     textAlign={'center'}
                     align={'center'}
                     spacing={{ base: 8, md: 10 }}
@@ -49,16 +50,11 @@ export default function Templates({ english, setEnglish, language }) {
                         fontWeight={600}
                         fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
                         lineHeight={'110%'}>
-                        Select a {' '}
-                        <Text as={'span'} color={'#38B2AC'}>
-                            Template {' '}
-                        </Text>
-                        from the list
+                        {language.selectTemplateHeading}
                     </Heading>
 
                 </Stack>
-                <>
-                    <Box maxW={{ base: '100%', md: '61%' }} className="templatesList">
+                    <Box maxW={{ base: '100%', md: '100%' }} className="templatesList">
                         {
                             ThemeTemplateData.map((item, index) => {
                                 return <div key={index} className="template" onClick={showTheme}>
@@ -67,7 +63,6 @@ export default function Templates({ english, setEnglish, language }) {
                             })
                         }
                     </Box>
-                </>
             </Container>
         </>
     );

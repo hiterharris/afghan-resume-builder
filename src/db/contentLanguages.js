@@ -13,7 +13,7 @@ export const contentLanguages = {
             address: 'Address',
             phoneNumber: 'Phone Number',
             email: 'Email',
-            technkcalSkillsLabel: 'Tchnical Skills',
+            technkcalSkillsLabel: 'Technical Skills',
             technkcalSkillsPlaceholder: 'Separate each skill with a comma',
             educationLabel: 'Education',
             addEducation: 'Add Education',

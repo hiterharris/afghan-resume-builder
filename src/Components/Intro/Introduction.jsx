@@ -98,19 +98,19 @@
 //                 </Stack>
 //                 {
 //                     selectBtn ?
-//                         <Stack>
-//                             <Image src={homeLogo} alt='home logo' my={'4'} />
-//                             <Button
-//                                 onClick={handleSelectTemplate}
-//                                 rounded={'full'}
-//                                 px={6}
-//                                 className='mb-4'
-//                                 colorScheme={'teal'}
-//                                 bg={'#38B2AC'}
-//                                 _hover={{ bg: '#319795' }}>
-//                                 {language.selectTemplateButton}
-//                             </Button>
-//                         </Stack>
+                        // <Stack>
+                        //     <Image src={homeLogo} alt='home logo' my={'4'} />
+                        //     <Button
+                        //         onClick={handleSelectTemplate}
+                        //         rounded={'full'}
+                        //         px={6}
+                        //         className='mb-4'
+                        //         colorScheme={'teal'}
+                        //         bg={'#38B2AC'}
+                        //         _hover={{ bg: '#319795' }}>
+                        //         {language.selectTemplateButton}
+                        //     </Button>
+                        // </Stack>
 //                         :
 //                         <>
 //                             <Box maxW={{ base: '100%', md: '61%' }} className="templatesList">

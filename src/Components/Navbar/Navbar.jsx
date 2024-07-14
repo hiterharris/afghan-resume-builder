@@ -5,15 +5,19 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom'
 import logo from './../../Assets/logo.png';
 import back from './../../Assets/back.png';
+import { useNavigate } from 'react-router-dom'
+
 
 export default function Navbar({ language }) {
     const { selectBtn, setSelectBtn } = useContext(ResumeContext)
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const content = language.nav;
+    const navigate = useNavigate();
 
     const handleBackButton = () => {
         setSelectBtn(!selectBtn);
+        navigate(-1);
     }
 
     return (
