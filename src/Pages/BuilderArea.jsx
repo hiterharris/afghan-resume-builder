@@ -6,6 +6,7 @@ import ResumeContext from '../Context/ResumeContext';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const BuilderArea = (props) => {
+    const { language } = props
     const { showComponent, setShowComponent, loading, handlePrint } = useContext(ResumeContext)
 
     const handleSelectNewTemplate = () => {
@@ -17,7 +18,7 @@ const BuilderArea = (props) => {
             {loading && <PropagateLoader id='spinner' color="#319795" size={30} />}
 
             <div id='main-box' className="d-flex justify-content-between flex-wrap mt-4 mx-2">
-                <UserDataCollect />
+                <UserDataCollect language={language} />
                 <div id='theme-box-border'>
                     {props.theme}
                 </div>

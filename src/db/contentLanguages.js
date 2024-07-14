@@ -13,12 +13,17 @@ export const contentLanguages = {
             address: 'Address',
             phoneNumber: 'Phone Number',
             email: 'Email',
-            technkcalSkillsLabel: 'Technical Skills',
-            technkcalSkillsPlaceholder: 'Separate each skill with a comma',
+            techincalSkillsLabel: 'Technical Skills',
+            technicalSkillsPlaceholder: 'Separate each skill with a comma',
             educationLabel: 'Education',
-            addEducation: 'Add Education',
+            addEducation: '+',
             projectsLabel: 'Projects',
-            addProjects: 'Add Projects'
+            addProjects: '+',
+            experienceLabel: 'Work Experience',
+            addExperience: '+',
+            awardsLabel: 'Awards and Achievements',
+            awardsPlaceholder: 'Separate each award with a comma',
+
         },
         nav: {
             home: 'Home',
@@ -39,12 +44,16 @@ export const contentLanguages = {
             address: 'آدرس',
             phoneNumber: 'شماره تماس',
             email: 'ایمیل',
-            technkcalSkillsLabel: 'مهارت های فنی ',
-            technkcalSkillsPlaceholder: 'هر مهارت را با کاما جدا کنید ',
+            techincalSkillsLabel: 'مهارت های فنی ',
+            technicalSkillsPlaceholder: 'هر مهارت را با کاما جدا کنید ',
             educationLabel: 'آموزش',
-            addEducation: 'اموزش را اضافه کنید',
+            addEducation: '+',
             projectsLabel: 'پروژه',
-            addProjects: 'اضافه کردن پروژه ها'
+            addProjects: '+',
+            experienceLabel: 'تجربه کار',
+            addExperience: '+',
+            awardsLabel: 'جایزه و رسالت',
+            awardsPlaceholder: 'هر جایزه را با کاما جدا کنید',
         },
         nav: {
             home: 'خانه',
@@ -52,31 +61,3 @@ export const contentLanguages = {
         }
     }
 };
-
-// Select File
-// Your Name
-// Summary
-// Work Profile
-// Address
-// Phone Number
-// Email,
-// Technical Skills 
-// Separate Each Skill with Commas 
-// Education
-// Add Education
-// Projects
-// Add Projects
-
-// انتخاب پرونده
-// اسم شما
-// خلاصه
-// مشخصات کار
-// آدرس
-// شماره تماس
-// ایمیل
-// مهارت های فنی 
-// هر مهارت را با کاما جدا کنید 
-// آموزش
-// اموزش را اضافه کنید
-// پروژه
-// اضافه کردن پروژه ها

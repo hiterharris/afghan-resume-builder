@@ -13,20 +13,26 @@ const themeComponents = {
     Theme3: Theme3,
 };
 
-const Theme = ({ english, setEnglish }) => {
+const Theme = ({ english, setEnglish, language }) => {
     const { currentTheme, themeData, componentRef } = useContext(ResumeContext);
 
     const renderThemeComponent = () => {
         const ThemeComponent = themeComponents[currentTheme];
         if (!ThemeComponent) return <ErrorPage />;
-        return <BuilderArea theme={<ThemeComponent componentRef={componentRef} themeData={themeData} />} />;
+        return (
+            <BuilderArea 
+                theme={<ThemeComponent componentRef={componentRef} themeData={themeData} />} 
+                language={language} 
+                english={english} 
+                setEnglish={setEnglish} 
+            />
+        )
     };
 
     return (
         <>
             <Box margin={4}>
-                {/* <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button> */}
-                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'Switch to Dari' : 'Switch to English'}</Button>
+                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
             </Box>
             {renderThemeComponent()}
         </>

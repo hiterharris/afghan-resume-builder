@@ -31,11 +31,9 @@ export default function Templates({ english, setEnglish, language }) {
             </Helmet>
 
             <Box margin={4}>
-                {/* <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button> */}
-                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'Switch to Dari' : 'Switch to English'}</Button>
+                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
             </Box>
-
-            <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'column', sm: 'column' }} display={'flex'} alignItems={'center'} maxW={'7xl'}>
+            <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'column', sm: 'column' }} display={'flex'} alignItems={'center'} maxW='100%'>
                 <Stack
                     width={{ base: '95%', md: '80%' }}
                     textAlign={'center'}

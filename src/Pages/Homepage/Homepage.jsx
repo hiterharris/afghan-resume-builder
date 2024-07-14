@@ -31,7 +31,7 @@ export default function Homepage({ english, setEnglish, language }) {
 
             <Box margin={4}>
                 {/* <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button> */}
-                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'Switch to Dari' : 'Switch to English'}</Button>
+                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
             </Box>
 
             <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'row', sm: 'column' }} display={'flex'} alignItems={'center'} maxW={'7xl'}>

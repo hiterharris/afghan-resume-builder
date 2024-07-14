@@ -3,12 +3,9 @@ import './userCollectData.css'
 import { IoMdCloudUpload } from 'react-icons/io'
 import { FormControl, Input, Heading, Textarea, Button, Switch } from '@chakra-ui/react'
 import ResumeContext from '../../Context/ResumeContext'
-const UserDataCollect = () => {
 
-
+const UserDataCollect = ({ language }) => {
     const { themeData, checkAward, setCheckAward, setThemeData, checkProj, checkWork, setCheckProj, setCheckWork } = useContext(ResumeContext)
-
-
     const [projectCount, setProjectCount] = useState(0)
     const [educationCount, setEducationCount] = useState(0)
     const [workCount, setWorkCount] = useState(0)
@@ -20,7 +17,7 @@ const UserDataCollect = () => {
     const [workData, setWorkData] = useState({ 'workTitles': { wTitle1: "Work Title" }, 'workDesc': { wDescription1: "Work Description are Shown here , with Bullet Points" } })
     const [personalData, setPersonalData] = useState({ profileImage: 'https://www.w3schools.com/howto/img_avatar.png', name: "Your Name", summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing eli', profile: "Work Profile", address: "Address Line", phone: "Phone Number", email: "Email Address", skill: 'Your, Skills, are, shown, here', })
     const [awardData, setAwardData] = useState({ awards: 'Your Awards are shown here' })
-    // To Add Personal Data to the State
+    
     const handleChangePersonal = (e) => {
         const { name, value } = e.target
         setPersonalData({ ...personalData, [name]: value })
@@ -28,7 +25,7 @@ const UserDataCollect = () => {
             setPersonalData({ ...personalData, profileImage: URL.createObjectURL(e.target.files[0]) })
         }
     }
-    // To Add Project Data to the State
+
     const handleChangeProject = (e) => {
         const { name, value, id } = e.target
         let tempProjectData = projectData
@@ -61,7 +58,6 @@ const UserDataCollect = () => {
         setProjectCount(i)
     }
 
-    // To Add Education Data to the State
     const handleChangeEducation = (e) => {
         const { name, value, id } = e.target
         let tempEducationData = educationData
@@ -72,6 +68,7 @@ const UserDataCollect = () => {
         }
         setEducationData({ ...educationData }, tempEducationData)
     }
+    
     const handleEducationClick = (e) => {
         e.preventDefault();
         let i = educationCount
@@ -92,7 +89,6 @@ const UserDataCollect = () => {
         setEducationCount(i)
     }
 
-    // To Add Work Data to the State
     const handleChangeWork = (e) => {
         const { name, value, id } = e.target
         let tempWorkData = workData
@@ -103,6 +99,7 @@ const UserDataCollect = () => {
         }
         setWorkData({ ...workData }, tempWorkData)
     }
+
     const handleWorkClick = (e) => {
         e.preventDefault();
         let i = workCount
@@ -123,15 +120,16 @@ const UserDataCollect = () => {
         setWorkCount(i)
     }
 
-    // To Add Award & Achievement Data to the State
     const handleChangeAwards = (e) => {
         const { name, value } = e.target
         setAwardData({ ...awardData, [name]: value })
     }
+
     useEffect(() => {
         setThemeData({ ...themeData, personalData, projectData, educationData, workData, awardData })
-       
+
     }, [themeData, personalData, setThemeData, projectData, educationData, workData, awardData])
+
 
     return (
         <>
@@ -142,56 +140,54 @@ const UserDataCollect = () => {
                         Personal Details
                     </Heading>
                     <hr />
-
                     <FormControl isRequired className='my-2'>
                         <div className='file'>
                             <label htmlFor='input-file'>
                                 <i className="material-icons"><IoMdCloudUpload size={30} />
-                                </i>Select a file
+                                </i>{language.personalDetails.selectFile}
                             </label>
                             <input accept="image/*" name='profileImage' onChange={handleChangePersonal} id='input-file' type='file' />
                             <img className="blah" src={personalData.profileImage} alt="your profile preview" />
                         </div>
                     </FormControl>
                     <FormControl isRequired className='my-2'>
-                        <Input name='name' onChange={handleChangePersonal} type={'text'} placeholder='Your Name' />
+                        <Input name='name' onChange={handleChangePersonal} type={'text'} placeholder={language.personalDetails.name} />
                     </FormControl>
                     <FormControl isRequired className='my-2'>
-                        <Input name='summary' onChange={handleChangePersonal} type={'text'} placeholder='Your Summary' />
+                        <Input name='summary' onChange={handleChangePersonal} type={'text'} placeholder={language.personalDetails.summary} />
                     </FormControl>
                     <FormControl isRequired className='my-2'>
-                        <Input name='profile' onChange={handleChangePersonal} type={'text'} placeholder='Work Profile' />
+                        <Input name='profile' onChange={handleChangePersonal} type={'text'} placeholder={language.personalDetails.workProfile} />
                     </FormControl>
                     <FormControl isRequired className='my-2'>
-                        <Input name='address' onChange={handleChangePersonal} type={'text'} placeholder='Address' />
+                        <Input name='address' onChange={handleChangePersonal} type={'text'} placeholder={language.personalDetails.address} />
                     </FormControl>
                     <FormControl isRequired className='my-2'>
-                        <Input name='phone' onChange={handleChangePersonal} type={'tel'} placeholder='Phone number' />
+                        <Input name='phone' onChange={handleChangePersonal} type={'tel'} placeholder={language.personalDetails.phoneNumber} />
                     </FormControl>
                     <FormControl isRequired className='my-2'>
-                        <Input name='email' onChange={handleChangePersonal} type={'email'} placeholder='Email id' />
+                        <Input name='email' onChange={handleChangePersonal} type={'email'} placeholder={language.personalDetails.email} />
                     </FormControl>
                 </div>
 
                 {/* Skills Area  */}
                 <div id="form-personal" className='mb-2'>
                     <Heading as='h4' size='md' className='my-2'>
-                        Technical Skills
+                        {language.personalDetails.techincalSkillsLabel}
                     </Heading>
                     <hr />
-
                     <FormControl isRequired className='my-2'>
-                        <Input name='skill' onChange={handleChangePersonal} type={'text'} placeholder='Separate skills by comma' />
+                        <Input name='skill' onChange={handleChangePersonal} type={'text'} placeholder={language.personalDetails.technicalSkillsPlaceholder}/>
                     </FormControl>
                 </div>
 
                 {/* Education Area  */}
                 <div id="form-personal" className='mb-2'>
                     <Heading as='h4' size='md' className='my-2'>
-                        Education
+                        {language.personalDetails.educationLabel}
                     </Heading>
                     <hr />
-                    <Button onClick={handleEducationClick} className='my-3 w-100' colorScheme='teal' variant='solid'>Add Education</Button>
+                    <Button onClick={handleEducationClick} className='my-3 w-100' colorScheme='teal' variant='solid'>{language.personalDetails.addEducation}</Button>
                     {
                         (educationCount > 0) ? educationArrTemplate.map((element, index) => <div key={index}>{element}</div>) : null
                     }
@@ -201,12 +197,12 @@ const UserDataCollect = () => {
                 <div id="form-personal" className='mb-2'>
                     <div className='d-flex align-items-center justify-content-between'>
                         <Heading as='h4' size='md' className='my-2'>
-                            Projects
+                            {language.personalDetails.projectsLabel}
                         </Heading>
                         <Switch defaultChecked={true} onChange={() => (setCheckProj(!checkProj))} colorScheme='teal' />
                     </div>
                     <hr />
-                    <Button disabled={checkProj} onClick={handleProjectClick} className='my-3 w-100' colorScheme='teal' variant='solid'>Add Projects</Button>
+                    <Button disabled={checkProj} onClick={handleProjectClick} className='my-3 w-100' colorScheme='teal' variant='solid'>{language.personalDetails.addProjects}</Button>
                     {
                         (projectCount > 0) ? projArrTemplate.map((element, index) => <div key={index}>{element}</div>) : null
                     }
@@ -216,12 +212,12 @@ const UserDataCollect = () => {
                 <div id="form-personal" className='mb-2'>
                     <div className='d-flex align-items-center justify-content-between'>
                         <Heading as='h4' size='md' className='my-2'>
-                            Work Experience
+                            {language.personalDetails.experienceLabel}
                         </Heading>
                         <Switch defaultChecked={true} onChange={() => (setCheckWork(!checkWork))} colorScheme='teal' />
                     </div>
                     <hr />
-                    <Button disabled={checkWork} onClick={handleWorkClick} className='my-3 w-100' colorScheme='teal' variant='solid'>Add Experience</Button>
+                    <Button disabled={checkWork} onClick={handleWorkClick} className='my-3 w-100' colorScheme='teal' variant='solid'>{language.personalDetails.addExperience}</Button>
                     {
                         (workCount > 0) ? workArrTemplate.map((element, index) => <div key={index}>{element}</div>) : null
                     }
@@ -231,13 +227,13 @@ const UserDataCollect = () => {
                 <div id="form-personal" className='mb-2'>
                     <div className='d-flex align-items-center justify-content-between'>
                         <Heading as='h4' size='md' className='my-2'>
-                            Awards & Achievement
+                            {language.personalDetails.awardsLabel}
                         </Heading>
                         <Switch defaultChecked={true} onChange={() => (setCheckAward(!checkAward))} colorScheme='teal' />
                     </div>
                     <hr />
                     <FormControl isRequired className='my-2'>
-                        <Textarea name='awards' disabled={checkAward} onChange={handleChangeAwards} placeholder='Use comma to separate Achievement' />
+                        <Textarea name='awards' disabled={checkAward} onChange={handleChangeAwards} placeholder={language.personalDetails.awardsPlaceholder} />
                     </FormControl>
                 </div>
 

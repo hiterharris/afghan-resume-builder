@@ -3,10 +3,9 @@ import ResumeContext from '../../Context/ResumeContext';
 import { Box, Flex, HStack, IconButton, useDisclosure, useColorMode, useColorModeValue, Stack, Button } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom'
-import logo from './../../Assets/logo.png';
+// import logo from './../../Assets/logo.png';
 import back from './../../Assets/back.png';
 import { useNavigate } from 'react-router-dom'
-
 
 export default function Navbar({ language }) {
     const { selectBtn, setSelectBtn } = useContext(ResumeContext)
@@ -24,13 +23,12 @@ export default function Navbar({ language }) {
         <>
             <Box id='navbar' bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                        <Box onClick={handleBackButton} style={{ cursor: 'pointer' }}>
-                            <img style={{ height: '44px' }} src={back} alt='back' />
-                        </Box>
-                    <Link to='/'>
+                    <Box onClick={handleBackButton} style={{ cursor: 'pointer' }}>
+                        <img style={{ height: '44px' }} src={back} alt='back' />
+                    </Box>
+                    {/* <Link to='/'>
                         <Box><img style={{ height: '44px' }} className='logo' src={logo} alt="logo" /></Box>
-                    </Link>
-
+                    </Link> */}
                     <HStack spacing={8} alignItems={'center'}>
                         <HStack
                             as={'nav'}
@@ -43,7 +41,6 @@ export default function Navbar({ language }) {
                             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                         </Button>
                     </HStack>
-
                     <IconButton
                         size={'md'}
                         icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -51,9 +48,7 @@ export default function Navbar({ language }) {
                         display={{ md: 'none' }}
                         onClick={isOpen ? onClose : onOpen}
                     />
-
                 </Flex>
-
                 {isOpen ? (
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
