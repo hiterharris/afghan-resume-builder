@@ -9,6 +9,7 @@ import { contentLanguages } from './db/contentLanguages';
 
 import Homepage from './Pages/Homepage/Homepage';
 import Templates from './Pages/Templates/Templates';
+import Theme from './Pages/Themes/Themes';
 
 function App() {
   const [english, setEnglish] = useState(true);
@@ -33,6 +34,7 @@ function App() {
           <Route exact path="/" element={<Homepage english={english} setEnglish={setEnglish} language={language} />} />
           <Route exact path="/templates" element={<Templates english={english} setEnglish={setEnglish} language={language} />} />
           <Route exact path="/about" element={<About english={english} setEnglish={setEnglish} language={language} />} />
+          <Route exact path="/theme" element={<Theme english={english} setEnglish={setEnglish} language={language} />} />
         </Routes>
       </div>
     </ResumeState>

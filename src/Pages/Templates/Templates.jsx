@@ -9,15 +9,15 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom'
 
 export default function Templates({ english, setEnglish, language }) {
-    const { selectBtn, setSelectBtn, setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext);
+    const { selectBtn, setSelectBtn, setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext)
+    const navigate = useNavigate();
 
     const showTheme = (e) => {
-        console.log('showTheme', e.target.id)
+        console.log('e.target.id', e.target.id)
         setShowComponent(!showComponent)
         setCurrentTheme(e.target.id)
+        navigate('/theme')
     }
-
-    console.log('selectBtn', selectBtn);
 
     return (
         <>
@@ -31,7 +31,7 @@ export default function Templates({ english, setEnglish, language }) {
                 <meta property="og:url" content="https://quick-resume.netlify.app/about" />
                 <meta property="og:type" content="website" />
             </Helmet>
-            
+
             <Box margin={4}>
                 <Button className='language-button' onClick={() => setEnglish(!english)}>{english ? 'Switch to Dari' : 'Switch to English'}</Button>
             </Box>
@@ -43,31 +43,31 @@ export default function Templates({ english, setEnglish, language }) {
                     align={'center'}
                     spacing={{ base: 8, md: 10 }}
                     py={{ base: 1.5, md: 10, sm: '14' }}>
-                            <Heading
-                                m={'1.5'}
-                                textAlign={{ base: 'center', md: 'start' }}
-                                fontWeight={600}
-                                fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-                                lineHeight={'110%'}>
-                                Select a {' '}
-                                <Text as={'span'} color={'#38B2AC'}>
-                                    Template {' '}
-                                </Text>
-                                from the list
-                            </Heading>
-                    
+                    <Heading
+                        m={'1.5'}
+                        textAlign={{ base: 'center', md: 'start' }}
+                        fontWeight={600}
+                        fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+                        lineHeight={'110%'}>
+                        Select a {' '}
+                        <Text as={'span'} color={'#38B2AC'}>
+                            Template {' '}
+                        </Text>
+                        from the list
+                    </Heading>
+
                 </Stack>
-                        <>
-                            <Box maxW={{ base: '100%', md: '61%' }} className="templatesList">
-                                {
-                                    ThemeTemplateData.map((item, index) => {
-                                        return <div key={index} className="template" onClick={showTheme}>
-                                            <img id={item.id} src={item.imageSrc} alt={item.imageAlt} />
-                                        </div>
-                                    })
-                                }
-                            </Box>
-                        </>
+                <>
+                    <Box maxW={{ base: '100%', md: '61%' }} className="templatesList">
+                        {
+                            ThemeTemplateData.map((item, index) => {
+                                return <div key={index} className="template" onClick={showTheme}>
+                                    <img id={item.id} src={item.imageSrc} alt={item.imageAlt} />
+                                </div>
+                            })
+                        }
+                    </Box>
+                </>
             </Container>
         </>
     );
