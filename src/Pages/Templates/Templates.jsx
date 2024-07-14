@@ -1,5 +1,5 @@
 import { Flex, Container, Heading, Stack, Text, Button, Box, Center } from '@chakra-ui/react';
-import './introduction.css';
+import '../../introduction.css';
 import homeLogo from './../../Assets/home-logo.png'
 import { Image } from '@chakra-ui/react'
 import { useContext } from 'react';
@@ -8,14 +8,11 @@ import ThemeTemplateData from '../../db/ThemeTemplateData';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom'
 
-export default function Introduction({ english, setEnglish, language }) {
+export default function Templates({ english, setEnglish, language }) {
     const { selectBtn, setSelectBtn, setCurrentTheme, showComponent, setShowComponent } = useContext(ResumeContext);
 
-    const handleSelectTemplate = () => {
-        setSelectBtn(!selectBtn);
-    }
-
     const showTheme = (e) => {
+        console.log('showTheme', e.target.id)
         setShowComponent(!showComponent)
         setCurrentTheme(e.target.id)
     }
@@ -46,42 +43,6 @@ export default function Introduction({ english, setEnglish, language }) {
                     align={'center'}
                     spacing={{ base: 8, md: 10 }}
                     py={{ base: 1.5, md: 10, sm: '14' }}>
-
-                    {
-                        selectBtn
-                            ?
-                            <>
-                                <Heading
-                                    fontWeight={600}
-                                    fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-                                    lineHeight={'110%'}>
-                                        {language.heading}
-                                </Heading>
-                                <Text color={'gray.500'} maxW={'3xl'}>
-                                    {language.subheading}
-                                </Text>
-                                <Flex _dark={{ color: 'gray.50' }} textAlign={'start'} flexDirection={'column'} w={'full'}>
-                                    <Box className='Bullet_Points'>
-                                        <Button>1</Button>
-                                        <Text _dark={{ color: "gray.400" }} color={'gray.900'} fontSize={'xl'}>
-                                            {language.steps[0]}
-                                        </Text>
-                                    </Box>
-                                    <Box className='Bullet_Points'>
-                                        <Button>2</Button>
-                                        <Text _dark={{ color: "gray.400" }} color={'gray.900'} fontSize={'xl'}>
-                                            {language.steps[1]}   
-                                        </Text>
-                                    </Box>
-                                    <Box className='Bullet_Points'>
-                                        <Button>3</Button>
-                                        <Text _dark={{ color: "gray.400" }} color={'gray.900'} fontSize={'xl'}>
-                                            {language.steps[2]}
-                                        </Text>
-                                    </Box>
-                                </Flex>
-                            </>
-                            :
                             <Heading
                                 m={'1.5'}
                                 textAlign={{ base: 'center', md: 'start' }}
@@ -94,24 +55,8 @@ export default function Introduction({ english, setEnglish, language }) {
                                 </Text>
                                 from the list
                             </Heading>
-                    }
+                    
                 </Stack>
-                {
-                    selectBtn ?
-                        <Stack>
-                            <Image src={homeLogo} alt='home logo' my={'4'} />
-                            <Button
-                                onClick={handleSelectTemplate}
-                                rounded={'full'}
-                                px={6}
-                                className='mb-4'
-                                colorScheme={'teal'}
-                                bg={'#38B2AC'}
-                                _hover={{ bg: '#319795' }}>
-                                {language.selectTemplateButton}
-                            </Button>
-                        </Stack>
-                        :
                         <>
                             <Box maxW={{ base: '100%', md: '61%' }} className="templatesList">
                                 {
@@ -123,7 +68,6 @@ export default function Introduction({ english, setEnglish, language }) {
                                 }
                             </Box>
                         </>
-                }
             </Container>
         </>
     );

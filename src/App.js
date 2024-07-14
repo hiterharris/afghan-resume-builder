@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import './App.css';
 import ResumeState from './Context/ResumeState';
 import { Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home/Home';
 import Navbar from './Components/Navbar/Navbar';
 import About from './Pages/About/About';
+import { contentLanguages } from './db/contentLanguages';
+
+import Homepage from './Pages/Homepage/Homepage';
+import Templates from './Pages/Templates/Templates';
 
 function App() {
+  const [english, setEnglish] = useState(true);
+  const language = contentLanguages[english ? 'en' : 'da'];
+
   return (
     <ResumeState>
       <div className="App">
@@ -22,11 +28,11 @@ function App() {
           <meta property="og:url" content="https://quick-resume.netlify.app/" />
           <meta property="og:type" content="website" />
         </Helmet>
-        <Navbar />
+        <Navbar language={language} />
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/about" element={<About />} />
+          <Route exact path="/" element={<Homepage english={english} setEnglish={setEnglish} language={language} />} />
+          <Route exact path="/templates" element={<Templates english={english} setEnglish={setEnglish} language={language} />} />
+          <Route exact path="/about" element={<About english={english} setEnglish={setEnglish} language={language} />} />
         </Routes>
       </div>
     </ResumeState>

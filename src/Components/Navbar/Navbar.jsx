@@ -1,28 +1,39 @@
+import { useContext } from 'react';
+import ResumeContext from '../../Context/ResumeContext';
 import { Box, Flex, HStack, IconButton, useDisclosure, useColorMode, useColorModeValue, Stack, Button } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Link as ReachLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from './../../Assets/logo.png';
+import back from './../../Assets/back.png';
 
-
-export default function Navbar() {
+export default function Navbar({ language }) {
+    const { selectBtn, setSelectBtn } = useContext(ResumeContext)
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const content = language.nav;
+
+    const handleBackButton = () => {
+        setSelectBtn(!selectBtn);
+    }
 
     return (
         <>
             <Box id='navbar' bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                    <ReachLink to='/'>
+                        <Box onClick={handleBackButton} style={{ cursor: 'pointer' }}>
+                            <img style={{ height: '44px' }} src={back} alt='back' />
+                        </Box>
+                    <Link to='/'>
                         <Box><img style={{ height: '44px' }} className='logo' src={logo} alt="logo" /></Box>
-                    </ReachLink>
+                    </Link>
 
                     <HStack spacing={8} alignItems={'center'}>
                         <HStack
                             as={'nav'}
                             spacing={4}
                             display={{ base: 'none', md: 'flex' }}>
-                            <ReachLink px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/'} >Home </ReachLink>
-                            <ReachLink px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/about'}> About</ReachLink>
+                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200', fontWeight: 'bold' }} to={'/home'}>{content.home}</Link>
+                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/about'}>{content.about}</Link>
                         </HStack>
                         <Button onClick={toggleColorMode}>
                             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
@@ -42,8 +53,8 @@ export default function Navbar() {
                 {isOpen ? (
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
-                            <ReachLink px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/'} >Home </ReachLink>
-                            <ReachLink px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/about'}> About</ReachLink>
+                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/'} >Home </Link>
+                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200' }} to={'/about'}> About</Link>
                         </Stack>
                     </Box>
                 ) : null}
