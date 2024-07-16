@@ -8,20 +8,17 @@ import { contentLanguages } from './db/contentLanguages';
 import Homepage from './Pages/Homepage/Homepage';
 import Templates from './Pages/Templates/Templates';
 import Themes from './Pages/Themes/Themes';
+import { isMobile } from 'react-device-detect';
 
 function App() {
   const [english, setEnglish] = useState(true);
   const language = contentLanguages[english ? 'en' : 'da'];
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo(0, 0)
-    }, 1000)
-  }, [])
+
 
   return (
     <ResumeState>
-      <div className="App">
+      <div className={isMobile ? 'App-mobile' : 'App'}>
         <Helmet>
           <title>Resume Builder - Create Professional Resumes Online</title>
           <meta name="description" content="Build and customize professional resumes online with Resume Builder. Choose from a variety of templates and create your perfect resume easily." />
