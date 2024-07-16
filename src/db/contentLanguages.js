@@ -4,7 +4,7 @@ export const contentLanguages = {
         subheading: "Resume builder tools that assemble well-formatted resume. Through a resume builder, you can create a professional-looking resume in a few easy steps. This resume builder offer different template options, so you can select the template that best fits your needs and style.",
         steps: ['Select a template from our collection.', 'Build you resume using our easy to use resume builder.', 'Download your resume.'],
         selectTemplateButton: 'Select Template',
-        selectTemplateHeading: 'Select a template from the list',
+        selectTemplateHeading: 'Select a template',
         personalDetails: {
             selectFile: 'Select File',
             name: 'Your Name',

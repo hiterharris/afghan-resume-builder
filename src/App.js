@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import './App.css';
 import ResumeState from './Context/ResumeState';
@@ -12,6 +12,12 @@ import Themes from './Pages/Themes/Themes';
 function App() {
   const [english, setEnglish] = useState(true);
   const language = contentLanguages[english ? 'en' : 'da'];
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 1000)
+  }, [])
 
   return (
     <ResumeState>

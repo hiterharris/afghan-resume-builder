@@ -30,10 +30,11 @@ export default function Templates({ english, setEnglish, language }) {
                 <meta property="og:type" content="website" />
             </Helmet>
 
-            <Box margin={4}>
-                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
+            <Box display="flex" justifyContent="center" margin={8}>
+                <Button className='language-button' minWidth={36} padding={6} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
             </Box>
-            <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'column', sm: 'column' }} display={'flex'} alignItems={'center'} maxW='100%'>
+
+            <Container my={{ base: 1.5, md: 32 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'column', sm: 'column' }} display={'flex'} alignItems={'center'} maxW='100%'>
                 <Stack
                     width={{ base: '95%', md: '80%' }}
                     textAlign={'center'}
@@ -41,24 +42,23 @@ export default function Templates({ english, setEnglish, language }) {
                     spacing={{ base: 8, md: 10 }}
                     py={{ base: 1.5, md: 10, sm: '14' }}>
                     <Heading
-                        m={'1.5'}
                         textAlign={{ base: 'center', md: 'start' }}
                         fontWeight={600}
                         fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-                        lineHeight={'110%'}>
+                    >
                         {language.selectTemplateHeading}
                     </Heading>
 
                 </Stack>
-                    <Box maxW={{ base: '100%', md: '100%' }} className="templatesList">
-                        {
-                            ThemeTemplateData.map((item, index) => {
-                                return <div key={index} className="template" onClick={showTheme}>
-                                    <img id={item.id} src={item.imageSrc} alt={item.imageAlt} />
-                                </div>
-                            })
-                        }
-                    </Box>
+                <Box maxW={{ base: '100%', md: '100%' }} className="templatesList">
+                    {
+                        ThemeTemplateData.map((item, index) => {
+                            return <div key={index} className="template" onClick={showTheme}>
+                                <img id={item.id} src={item.imageSrc} alt={item.imageAlt} />
+                            </div>
+                        })
+                    }
+                </Box>
             </Container>
         </>
     );

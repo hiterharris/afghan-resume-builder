@@ -31,8 +31,8 @@ const Theme = ({ english, setEnglish, language }) => {
 
     return (
         <>
-            <Box margin={4}>
-                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
+            <Box display="flex" justifyContent="center" margin={8}>
+                <Button className='language-button' minWidth={36} padding={6} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
             </Box>
             {renderThemeComponent()}
         </>

@@ -29,9 +29,8 @@ export default function Homepage({ english, setEnglish, language }) {
                 <meta property="og:type" content="website" />
             </Helmet>
 
-            <Box margin={4}>
-                {/* <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button> */}
-                <Button className='language-button' minWidth={36} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
+            <Box display="flex" justifyContent="center" margin={8}>
+                <Button className='language-button' minWidth={36} padding={6} onClick={() => setEnglish(!english)}>{english ? 'تغییر به دری' : 'Switch to English'}</Button>
             </Box>
 
             <Container my={{ base: 1.5, md: 16 }} justifyContent={'space-between'} flexDirection={{ base: 'column', md: 'row', sm: 'column' }} display={'flex'} alignItems={'center'} maxW={'7xl'}>
@@ -78,7 +77,7 @@ export default function Homepage({ english, setEnglish, language }) {
                     <Button
                         onClick={handleSelectTemplate}
                         rounded={'full'}
-                        px={6}
+                        padding={8}
                         className='mb-4'
                         colorScheme={'teal'}
                         bg={'#38B2AC'}
