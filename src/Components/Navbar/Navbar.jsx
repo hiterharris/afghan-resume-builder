@@ -5,22 +5,23 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom'
 import back from './../../Assets/back.png';
 import backWhite from './../../Assets/back-white.png';
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom';
+import Toggle from '../Toggle/Toggle';
 
-export default function Navbar({ language }) {
+export default function Navbar({ language, english, setEnglish }) {
     const { selectBtn, setSelectBtn } = useContext(ResumeContext)
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen } = useDisclosure();
-    const content = language.nav;
     const navigate = useNavigate();
     const location = useLocation();
+    const isHome = location.pathname == '/';
 
     const handleBackButton = () => {
         setSelectBtn(!selectBtn);
         navigate(-1);
         setTimeout(() => {
             window.scrollTo(0, 0)
-          }, 200)
+        }, 200)
     }
 
     useEffect(() => {
@@ -32,15 +33,10 @@ export default function Navbar({ language }) {
             <Box id='navbar' bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                     <Box onClick={handleBackButton} style={{ cursor: 'pointer' }}>
-                        {location.pathname != '/' && <img style={{ height: '44px' }} src={colorMode === 'light' ? back : backWhite} alt='back' />}
+                        <img style={{ height: '44px', visibility: isHome ? 'hidden' : 'visible' }} src={colorMode === 'light' ? back : backWhite} alt='back' />
                     </Box>
+                    <Toggle english={english} setEnglish={setEnglish} />
                     <HStack spacing={8} alignItems={'center'}>
-                        <HStack
-                            as={'nav'}
-                            spacing={4}
-                            display={{ base: 'none', md: 'flex' }}>
-                            <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: 'gray.200', fontWeight: 'bold' }} to={'/'}>{content.home}</Link>
-                        </HStack>
                         <Button onClick={toggleColorMode}>
                             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
                         </Button>

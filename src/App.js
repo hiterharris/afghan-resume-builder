@@ -14,8 +14,6 @@ function App() {
   const [english, setEnglish] = useState(true);
   const language = contentLanguages[english ? 'en' : 'da'];
 
-
-
   return (
     <ResumeState>
       <div className={isMobile ? 'App-mobile' : 'App'}>
@@ -30,11 +28,11 @@ function App() {
           <meta property="og:url" content="https://quick-resume.netlify.app/" />
           <meta property="og:type" content="website" />
         </Helmet>
-        <Navbar language={language} />
+        <Navbar language={language} english={english} setEnglish={setEnglish} />
         <Routes>
-          <Route exact path="/" element={<Homepage english={english} setEnglish={setEnglish} language={language} />} />
-          <Route exact path="/templates" element={<Templates english={english} setEnglish={setEnglish} language={language} />} />
-          <Route exact path="/theme" element={<Themes english={english} setEnglish={setEnglish} language={language} />} />
+          <Route exact path="/" element={<Homepage language={language} />} />
+          <Route exact path="/templates" element={<Templates language={language} />} />
+          <Route exact path="/theme" element={<Themes language={language} />} />
         </Routes>
       </div>
     </ResumeState>
