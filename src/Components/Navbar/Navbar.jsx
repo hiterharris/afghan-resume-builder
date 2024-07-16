@@ -8,13 +8,13 @@ import backWhite from './../../Assets/back-white.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Toggle from '../Toggle/Toggle';
 
-export default function Navbar({ language, english, setEnglish }) {
+export default function Navbar({ english, setEnglish }) {
     const { selectBtn, setSelectBtn } = useContext(ResumeContext)
     const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen } = useDisclosure();
     const navigate = useNavigate();
     const location = useLocation();
-    const isHome = location.pathname == '/';
+    const isHome = location.pathname === '/';
 
     const handleBackButton = () => {
         setSelectBtn(!selectBtn);
